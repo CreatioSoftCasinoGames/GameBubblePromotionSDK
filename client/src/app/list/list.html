@@ -1,0 +1,159 @@
+image
+<div class="col-sm-12">
+  <div class="form-group col-xs-12 floating-label-form-group controls">
+        <label>{{label}}</label>
+    </div>
+</div>
+
+
+<div class="col-sm-12" ng-show="showList">
+    <table class="table table-striped">
+        <tr>
+            <th>App Image</th>
+            <th>App Id</th>
+            <th>App Name</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="app in appList">
+            <td><img src="{{app.imageUrl}}" height="60" width="60"></th>
+            <td>{{app.appId}}</th>
+            <td>{{app.appName}}</td>
+            <td> <button type="submit" class="btn btn-success btn-sm" ng-click="edit(app)">Edit</button></span></td>
+        </tr>
+    </table>
+</div>
+
+<div ng-hide="showList">
+    <div class="col-sm-8 col-lg-offset-2">    
+        <form name="sentMessage" id="contactForm" novalidate="">
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="col-md-2 nopadding">
+                        <label>App Id*</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" ng-model="data.appId" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="col-md-2 nopadding">
+                        <label>App Name*</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" ng-model="data.appName">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="col-md-2 nopadding">
+                        <label>App Type</label>
+                    </div>
+                    <div class="col-md-5">
+                        <select class="form-control" ng-model="data.appType">
+                            <option value="android">Android</option>
+                            <option value="ios">IOS</option>
+                        </select>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="col-md-2 nopadding">
+                        <label>Link</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" ng-model="data.link">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="col-md-2 nopadding">
+                       
+                    </div>
+                    <div class="col-md-5">
+                        <button type="submit" class="btn btn-success btn-md" ng-click="cancel()">Cancel</button></span>
+                        <button type="submit" class="btn btn-success btn-md" ng-click="update(data)">Update</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="col-md-2 nopadding">
+                        <label>Campaign App Id list</label>
+                    </div>
+                    <div class="col-md-5">
+                       <input type="text" class="form-control" ng-model="data.promotionalAppId" ng-disabled="isDisabled">
+                    <div class="col-md-5">
+                       <span ng-show="isDisabled">
+                            <button  class="btn btn-success btn-md" ng-click="editPromotionalId()" style="margin: 7px 0px 0px -14px;">Edit</button>
+                        </span>
+                        <span ng-show="!isDisabled">
+                            <button  class="btn btn-success btn-md" ng-click="savePromotionalId(data.promotionalAppId, data)" style="margin: 7px 0px 0px -14px;">Save</button>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="col-md-2 nopadding">
+                        <label>Upload an Image</label>
+                    </div>
+                    <div class="col-md-5">
+                     <button  class="btn btn-success btn-md" ng-click="upload(data)()" style="margin: 29px 0px 0px -129px;">Upload</button>
+                       
+                    <div class="col-md-5">
+                        <input  name="file" type="file" file>
+                    </div>
+                    </div>
+                    <div class="progress" ng-show = "showProgress">
+                        <p>Uploading Image in progress ----</p>
+                      <!-- <div class="progress-bar" role="progressbar" aria-valuenow="{{progressVal}}"
+                      aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                        {{progressVal}}
+                      </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- <input type="file" id="fileInput">Select Image</input> -->
+            <!-- <input type="file" fileread="uploadme"/>  -->
+            <!-- <button ng-click="upload(data)">Upload</button>
+            <input name="file" type="file" file /> -->
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="col-md-2 nopadding">
+                        <label>Select App</label>
+                    </div>
+                    <div class="col-md-5">
+                        <select class="form-control" ng-model="appId">
+                            <option value="" style="display:none;">Select app from list</option>
+                            <option ng-repeat="item in appList"  value="{{item.appId}}">{{item.appName}} ({{item.appId}})</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row control-group">
+                <div class="form-group col-xs-12 floating-label-form-group controls">
+                    <div class="col-md-2 nopadding">
+                       
+                    </div>
+                    <div class="col-md-5">
+                        <button type="submit" class="btn btn-success btn-md" ng-click="add(appId, data)">Add Campaign</button></span>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

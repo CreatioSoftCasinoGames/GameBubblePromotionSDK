@@ -1,0 +1,63 @@
+
+
+    <section class="primary" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <br><br><br><br><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                
+                    <form name="sentMessage" id="contactForm" novalidate="">
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <div class="col-md-2 nopadding">
+                                    <label>App Name*</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" ng-model="data.appName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <div class="col-md-2 nopadding">
+                                    <label>Select Type*</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <select class="form-control" ng-model="data.appType">
+                                        <option value="" style="display:none;">Select type from list</option>
+                                        <option value="android">Android</option>
+                                        <option value="ios">IOS</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <div class="col-md-2 nopadding">
+                                    <label>Link*</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" ng-model="data.link">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-7 pull-right">
+                                <button type="submit" class="btn btn-success btn-md" ng-click="create()">Register</button>
+                            </div>
+                        </div>
+
+                                               
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
